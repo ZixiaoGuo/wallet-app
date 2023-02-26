@@ -1,36 +1,39 @@
 package com.zixiaoguo.walletapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import org.springframework.stereotype.Component;
+import java.util.UUID;
 
-@Component
+
 public class Wallet {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private double amount;
+
+    private final String id;
+    private double balance;
+
+
 
     public Wallet() {
-        amount = 0;
+        balance = 0;
+        id = UUID.randomUUID().toString();
     }
 
-    public double getAmount() {
-        return amount;
+    public String getId() {
+        return id;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     @Override
     public String toString() {
         return "Wallet{" +
                 "id=" + id +
-                ", amount=" + amount +
+                ", amount=" + balance +
                 '}';
     }
 }
